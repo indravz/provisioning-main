@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DAOOrderToBillOracle implements DAOOrderToBill {
+	//Chandni
 	public static Connection createConnection() {
 		Connection con = null;
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String uname = "scott";
 			String password = "tiger";
-			String url = "jdbc:oracle:thin:@192.168.0.184:1521:orcl";
+			String url = "jdbc:oracle:thin:@192.168.0.240:1521:orcl";
 			con = DriverManager.getConnection(url, uname, password);
 			return con;
 		} catch (ClassNotFoundException e) {
@@ -43,6 +44,7 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 	 * try { if (pstmt != null) pstmt.close(); if (con != null) con.close(); }
 	 * catch (SQLException e) { e.printStackTrace(); } } return 0; }
 	 */
+	
 	@Override
 	public java.sql.Date getModifiedDate(){
 		java.util.Date utilDate = new java.util.Date();
@@ -94,7 +96,8 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 		}
 		return 0;
 	}
-
+	
+	//Deepthi
 	@Override
 	public List<Order> getProvisionReadyOrders() {
 		Connection con = null;
@@ -136,7 +139,8 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 		return orderList;
 
 	}
-
+	
+	//Amulya
 	@Override
 	public int getZipcode(int serviceAddressId) {
 		Connection con = null;
@@ -175,6 +179,7 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 
 	}
 	
+	//Deepthi
 	@Override
 	public List<String> getDeviceIdsInZipcode(int zipcode) {
 		Connection con = null;
@@ -210,6 +215,7 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 		return deviceIds;
 	}
 	
+	//Deepthi
 	@Override
 	public int getDeviceSeqNo(String deviceId, int portId) {
 		Connection con = null;
@@ -244,6 +250,7 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 		return -1;
 	}
 	
+	//Deepthi
 	@Override
 	public Device getDevice(int sequenceNumber) {
 		Connection con = null;
@@ -286,6 +293,8 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 		return device;
 	}
 	
+	
+	//Amulya
 	@Override
 	public List<Integer> getVacantPortIdsInDevice(String deviceId) {
 		Connection con = null;
@@ -321,6 +330,7 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 		return portIds;
 	}
 	
+	//Amulya
 	@Override
 	public List<Integer> getAllPortIdsInDevice(String deviceId) {
 		Connection con = null;
@@ -356,6 +366,7 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 		return portIds;
 	}
 	
+	//Susritha
 	@Override
 	public List<Integer> getReservedPortIdsInDevice(String deviceId) {
 		Connection con = null;
@@ -390,7 +401,7 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 
 		return portIds;
 	}
-	
+	//Deepthi
 	@Override
 	public List<Integer> getAllZipcodes() {
 		Connection con = null;
@@ -461,6 +472,7 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 	 * }
 	 */
 	
+	//Chandni
 	@Override
 	public int insertConnectionIntoCircuitDesign(int sourcePort,
 			int destinationPort, int orderId, int customerId,
@@ -500,6 +512,7 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 
 	}
 	
+	//Chandni
 	@Override
 	public int getCircuitOrderIdForChangeOrder(int customerId) {
 		Connection con = null;
@@ -537,6 +550,7 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 	}
 	
 	
+	//Amulya
 	@Override
 	public void updateDeviceStatus(int sequenceNumber, String status) {
 		Connection con = null;
@@ -565,6 +579,7 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 
 	}
 	
+	//Amulya
 	@Override
 	public void updateCircuitStatus(int orderId, String status) {
 		Connection con = null;
@@ -650,6 +665,7 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 		}
 	}
 	
+	//Susritha
 	@Override
 	public Circuit getCircuitDetails(int orderId) {
 		Connection con = null;
@@ -697,7 +713,7 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 		return circuit;
 
 	}
-	
+	//Susritha
 	@Override
 	public List<Circuit> getAllCircuitsOfCustomer(int customerId) {
 		Connection con = null;
@@ -781,6 +797,7 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 
 	}
 	
+	//Susritha
 	@Override
 	public Order getOrderDetails(int orderId) {
 		Connection con = null;
@@ -858,6 +875,7 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 
 	}*/
 	
+	//Deepthi
 	@Override
 	public String getCustomerId(int orderId) {
 		Connection con = null;

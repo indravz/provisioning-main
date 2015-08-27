@@ -56,7 +56,7 @@ public class GetAllInitialData extends HttpServlet {
 		request.setAttribute("dzip", dzip);
 		
 		List<String> ddevice= dest.getDeviceIdsInZipcode(dzip);
-		System.out.println("ddevic e ids in zipcode "+ ddevice);
+		System.out.println("ddevice ids in zipcode "+ ddevice);
 		
 		HttpSession hs=request.getSession();
 		hs.setAttribute("ddevice", ddevice);

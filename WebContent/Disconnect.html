@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
+<jsp:include page="Header.jsp"></jsp:include>
 <head>
 <!-- <meta charset="ISO-8859-1"> -->
 <title>Provisioning Disconnect</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="styles.css">
- 
+   <meta charset="utf-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
 <script type="text/javascript">
 function confirmDisconnect() {
 	var r = confirm("Do you really want to disconnect?");
@@ -21,6 +22,7 @@ function confirmDisconnect() {
 }
 </script>
 </head>
+<div class="layout">
 <body>
 <h1 class="vzh1">Disconnect</h1>
 <h2>Order Details</h2>
@@ -29,6 +31,8 @@ function confirmDisconnect() {
     OrderId: <input type="text" name="orderid">
 </form>
 
+
 <button type="button" class="vzbtn" onclick="confirmDisconnect()">Disconnect</button>
+<jsp:include page="Header2.jsp"></jsp:include>
 </body>
 </html>

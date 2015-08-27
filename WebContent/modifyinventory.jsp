@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<jsp:include page="Header.jsp"></jsp:include>
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="styles.css">
@@ -65,7 +66,7 @@ function clearFields()
 </script>
 </head>
 <body>
-<div>
+<div class="layout" style="padding-top:170px;">
 
 <table class="vztable" id="addinvent">
 <tr align="center" >
@@ -106,7 +107,7 @@ function clearFields()
 </div>
 <span id="amit"> </span> 
 
-
+<jsp:include page="Header2.jsp"></jsp:include>
 
 </body>
 </html>

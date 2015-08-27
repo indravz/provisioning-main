@@ -40,11 +40,13 @@ public class GetVacantDPortIdsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String ddev=request.getParameter("ddevice");
+		HttpSession hs=request.getSession();
+		String ddev=(String) hs.getAttribute("ddevice");
+		System.out.println(ddev);
 		List<Integer> dport = new DAOOrderToBillOracle().getVacantPortIdsInDevice(ddev);
 		Collections.sort(dport) ;
 		PrintWriter pw=response.getWriter();
-		HttpSession hs=request.getSession();
+		
 		if (dport.isEmpty()){
 			System.out.println("So it is empty");
 			hs.setAttribute("dport",-1);
@@ -57,6 +59,7 @@ public class GetVacantDPortIdsServlet extends HttpServlet {
 			
 		else{
 			int dp= dport.get(0);
+			System.out.println(dp);
 			hs.setAttribute("dport",dp);
 			hs.setAttribute("ddevsel", ddev);
 			pw.write(dp);
