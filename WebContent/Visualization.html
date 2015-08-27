@@ -1,0 +1,119 @@
+<html>
+<head>
+    <script type="text/javascript" src="script/vis.min.js"></script>
+    <link href="script/vis.min.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        #mynetwork {
+            width: 600px;
+            height: 400px;
+            border: 1px solid lightgray;
+        }
+    </style>
+    <script type="text/javascript">
+
+	function display(){
+		console.log(DOTstring);
+		var parsedData = vis.network.convertDot(DOTstring);
+
+		var data = {
+	  	nodes: parsedData.nodes,
+	  	edges: parsedData.edges
+		}
+
+	var options = parsedData.options;
+	    
+	    // create a network
+	    var container = document.getElementById('mynetwork');
+
+	    var options = {};
+
+	    // initialize your network!
+	    var network = new vis.Network(container, data, options);
+	    
+	    network.on("selectNode", function (params) {
+	        params.event = "[original event]";
+	       
+	        //document.getElementById('nodeId').innerHTML = params.nodes;
+	        getDeviceDetails(params.nodes);
+	    });
+	    
+	    /* network.on("click", function (params) {
+	        params.event = "[original event]";
+	       
+	        document.getElementById('EdgeSelected').innerHTML = '<h2>Click event:</h2>' + JSON.stringify(params, null, 4);
+	        //getCircuitDetails(params.nodes);
+	        console.log(params.edges);
+	    }); */
+	    
+	    
+		
+	}
+	
+
+	
+	function getDeviceDetails(nodeid){
+		
+		var XMLHttp;
+		if(window.XMLHttpRequest){
+			xmlHttp=new XMLHttpRequest();
+		}
+		else{			
+			xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		xmlHttp.onreadystatechange=function(){
+			
+			if(xmlHttp.readyState==4 && xmlHttp.status==200){
+				document.getElementById('eventSpan').innerHTML=xmlHttp.responseText;
+			}
+		}
+		
+		xmlHttp.open("POST", "GetDeviceDetailsServlet?nodeid="+nodeid, true);
+		/* alert("Opened RequestObject"); */
+		xmlHttp.send();
+	}
+	
+	function getData(){
+		var XMLHttp;
+		if(window.XMLHttpRequest){
+			xmlHttp=new XMLHttpRequest();
+		}
+		else{			
+			xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		xmlHttp.onreadystatechange=function(){
+			
+			if(xmlHttp.readyState==4 && xmlHttp.status==200){
+				DOTstring=xmlHttp.responseText;
+				display();
+			}
+		}
+		
+		xmlHttp.open("POST", "GetDataServlet", true);
+		/* alert("Opened RequestObject"); */
+		xmlHttp.send();
+		
+		/* alert("Sent RequestObject"); */
+
+		
+		//DOTstring = 'dinetwork {1 -> 1 -> 2; 2 -> 3; 2 -- 4; 2 -> 1 }';
+		
+	}
+
+	
+</script>
+</head>
+
+<input type="button" onClick="getData()" value="View Network Design" />
+
+<div id="mynetwork"></div>
+<div id="nodeId"></div>
+<div id="eventSpan"></div>
+<div id="EdgeSelected"></div>
+
+
+</body>
+		
+</html>

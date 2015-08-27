@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="theme.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+  function clearFields()
+  {
+      document.getElementById("email").value="";
+      document.getElementById("pwd").value="";
+      }
+ 
+	
+	  
+
+   
+  </script>
+</head>
+<body >
+
+ <div  style="   
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    margin: auto;">
+<div class="container-fluid"> 
+	
+	<div class="image-responsive" >  <img src='logo.png' alt=''/></div>
+  <h2><center><strong>Login</center></strong></h2>
+  <form role="form" action="Authenticate" method="post">
+    <div class="form-group">
+      <label for="email">User Name:</label>
+      <input type="textbox" class="form-control" id="email" name="username" placeholder="username">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" name="password" placeholder="Enter password">
+    </div>
+   
+	
+    <div><center><input type="submit"  class="vzbtnmedium" value="Submit" />
+	<button type="button" class="vzbtn1medium" onclick="clearFields();">Cancel</button></center></div>
+	
+	
+	</form>
+</div>
+</div>
+</div>
+
+</body>
+</html>
