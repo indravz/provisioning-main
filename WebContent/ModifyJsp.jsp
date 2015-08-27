@@ -30,15 +30,14 @@
 </head>
 <div class="layout" style="padding-top:185px;">
 <body>
-<form name="modify" action="ModifyServlet">
+<form name="modify" action="ModifyServlet" >
 <h1 align="center" class="vzh1">Modify Order </h1>
 <h2 class="vzh2">Circuits Of the Current Customer</h2>
 <h3 class="vzh3">Select one circuit to modify</h3>
 <br><br>
 <select name="circuit">
 <c:forEach var="e" items="${circuits}">
-<option value="${e.orderId}"><c:out value="${e.sourcePort}"></c:out>,<c:out value="${e.destinationPort}"></c:out>,<c:out value="${e.orderId}"></c:out>,<c:out value="${e.bandwidthMbps}"></c:out>,<c:out value="${e.status}"></c:out>
-</option>
+<option value="${e.orderId}"><c:out value="SourcePort:${e.sourcePort}"></c:out>,<c:out value="Destination Port:${e.destinationPort}"></c:out>,<c:out value="OrderID:${e.orderId}"></c:out>,<c:out value="Bandwidth:${e.bandwidthMbps}"></c:out>,<c:out value="Status:${e.status}"></c:out>
 </c:forEach>
 </select>
 

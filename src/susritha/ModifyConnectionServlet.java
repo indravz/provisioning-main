@@ -1,7 +1,10 @@
 package susritha;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import DAO.*;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -58,8 +61,10 @@ public class ModifyConnectionServlet extends HttpServlet {
 		System.out.println(orderid);
 		dao.updateDestinationPort(Integer.parseInt(orderid),seqnum);
 		dao.updateOrderStatus(Integer.parseInt(orderid), "PC");
-		RequestDispatcher rd = request.getRequestDispatcher("FinalPage.jsp");
-		rd.forward(request, response);
+		PrintWriter p=response.getWriter();
+		p.write("update");
+		/*RequestDispatcher rd = request.getRequestDispatcher("FinalPage.jsp");
+		rd.forward(request, response);*/
 		
 	}
 

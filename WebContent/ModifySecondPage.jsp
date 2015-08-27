@@ -5,6 +5,7 @@
      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<jsp:include page="Header.jsp"></jsp:include>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Modify Details</title>
@@ -47,12 +48,42 @@
 			/* alert("Sent RequestObject"); */
 				
 		}
+		function alertfunction(){
+			var xmlHttp;
+			
+			
+			if(window.XMLHttpRequest){
+				xmlHttp=new XMLHttpRequest();
+			/* 	alert("Created RequestObject"); */
+			}
+			else{
+				
+				xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			
+			xmlHttp.onreadystatechange=function(){
+				
+				if(xmlHttp.readyState==4 && xmlHttp.status==200){
+					/* alert("Changing Response"); */
+					console.log(xmlHttp.responseText);
+					alert("Change request Proccessed Succesfully");
+				}
+			}
+			
+			xmlHttp.open("GET", "ModifyConnectionServlet", true);
+			/* alert("Opened RequestObject"); */
+			xmlHttp.send();
+			/* alert("Sent RequestObject"); */
+			
+			
+		}
 
 </script>
 
 </head>
+<div class="layout" style="padding-top:185px;">
 <body>
-<form action="ModifyConnectionServlet">
+
 <%-- <h3>The selected circuit details are</h3>
 <c:forEach var="e" items="circuit">
 <c:out value="${e.sourcePort}"></c:out>
@@ -71,39 +102,13 @@ ${e}
 </c:forEach>
 
 </select>
-<%-- <%
-String orderid = request.getParameter("orderid");
 
-
-%> --%>
-<%-- <b>Locations:</b>
-<select name=devices onchange="getPorts(this.value)">
-<c:forEach var="e" items="${requestScope.devices}">
-<option>
-${e}
-</option>
-</c:forEach>
-</select><br> --%>
-<%-- <b>Ports:</b>
-<select>
-<c:forEach var="e" items="${requestScope.ports}">
-<option>
-${e}
-</option>
-</c:forEach>
-</select> --%>
-<%-- < <select >
-<option value="Device1"><c:out value=""></c:out></option>
-<option value="Device2">Device2</option>
-</select> --%> 
-<!--  <b>Port Number(Optional):</b>
- <input type="text" name="port">  -->
- 
  
  
 <div id="res">
 		</div>
-		<input class="vzbtn" type="submit" value="submit">
-		</form>
+		<input class="vzbtn" type="button" value="submit" onclick="alertfunction()">
+	<jsp:include page="Header2.jsp"></jsp:include>	
 </body>
+</div>
 </html>

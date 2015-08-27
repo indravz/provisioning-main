@@ -1,7 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
+<jsp:include page="Header.jsp"></jsp:include>
 <head>
-    <script type="text/javascript" src="script/vis.min.js"></script>
-    <link href="script/vis.min.css" rel="stylesheet" type="text/css" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="styles.css">
+   <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <style type="text/css">
         #mynetwork {
@@ -200,6 +210,7 @@ function getCircuitDetails(srcNode, destNode){
 
 	
 </script>
+<div class="layout" style="padding-top:185px;">
 </head>
 <body>
 <input type="button" onClick="getData()" value="View Network Design" />
@@ -215,5 +226,6 @@ function getCircuitDetails(srcNode, destNode){
 
 
 </body>
+<jsp:include page="Header2.jsp"></jsp:include>
 		
 </html>
