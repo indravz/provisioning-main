@@ -40,7 +40,7 @@ public class GetVacantPortIdsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession hs=request.getSession();
-		String dev=(String)hs.getAttribute("device");
+		String dev=request.getParameter("device").toString();
 		List<Integer> port = new DAOOrderToBillOracle().getVacantPortIdsInDevice(dev);
 		System.out.println("Vacant ports "+ port);
 		Collections.sort(port) ;
@@ -60,7 +60,7 @@ public class GetVacantPortIdsServlet extends HttpServlet {
 			System.out.println(p);
 			hs.setAttribute("port",p);
 			hs.setAttribute("devsel", dev);
-			pw.write(p);
+			pw.write(""+p);
 		}
 		
 		

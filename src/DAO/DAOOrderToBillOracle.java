@@ -96,7 +96,52 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 		}
 		return 0;
 	}
-	
+	public Circuit getCircuitDetailsUsingPorts(int srcNode, int destNode) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Circuit circuit = null;
+
+		try {
+			con = createConnection();
+			String query = "select * from circuit_Design where source_port="
+					+ srcNode+" and destination_port="+destNode;
+			System.out.println(query);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				int sourcePort = rs.getInt("source_port");
+				int destinationPort = rs.getInt("destination_port");
+				int orderIdInt = rs.getInt("order_id");
+				int customerId = rs.getInt("customer_id");
+				int bandwidthMbps = rs.getInt("bandwidth_mbps");
+				String status = rs.getString("status");
+				java.sql.Date dueDate = rs.getDate("due_Date");
+				java.sql.Date modifiedDate = rs.getDate("modified_Date");
+
+				circuit = new Circuit(sourcePort, destinationPort, orderIdInt,
+						customerId, bandwidthMbps, status, dueDate,
+						modifiedDate);
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return circuit;
+
+	}
 	//Deepthi
 	@Override
 	public List<Order> getProvisionReadyOrders() {
@@ -305,7 +350,7 @@ public class DAOOrderToBillOracle implements DAOOrderToBill {
 			con = createConnection();
 			String query = "select port_id from Device where device_id='"
 					+ deviceId + "' and status='VACANT'";
-
+			System.out.println("device id in dao"+deviceId);
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
 

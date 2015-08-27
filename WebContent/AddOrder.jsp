@@ -44,11 +44,12 @@
 		}
 
 		
-		function checkPort()
+		function checkPort(dev)
 		
 		{
-			console.log("reached here");
-			var dev= document.getElementById("device");
+			/* console.log("reached here");
+			var dev= document.getElementById("device"); */
+			alert(dev);
 			var xmlHttp;
 			
 			if(window.XMLHttpRequest){
@@ -68,6 +69,7 @@
 						alert("No vacant ports. Choose another device.")
 					}
 					else{
+						alert(xmlHttp.responseText);
 					document.getElementById("pSrc").innerHTML=xmlHttp.responseText;
 					}
 				}

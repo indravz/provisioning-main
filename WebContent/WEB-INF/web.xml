@@ -163,4 +163,25 @@
     <servlet-name>GetDeviceDetailsServlet</servlet-name>
     <url-pattern>/GetDeviceDetailsServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <servlet-name>GetAllDetailsServlet</servlet-name>
+    <servlet-class>DAO.GetAllDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAllDetailsServlet</servlet-name>
+    <url-pattern>/GetAllDetailsServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <servlet-name>GetCircuitDetailsServlet</servlet-name>
+    <servlet-class>DAO.GetCircuitDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCircuitDetailsServlet</servlet-name>
+    <url-pattern>/GetCircuitDetailsServlet</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

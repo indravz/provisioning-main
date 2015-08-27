@@ -62,7 +62,7 @@ public class GetVacantDPortIdsServlet extends HttpServlet {
 			System.out.println(dp);
 			hs.setAttribute("dport",dp);
 			hs.setAttribute("ddevsel", ddev);
-			pw.write(dp);
+			pw.write(""+dp);
 		}
 			
 		

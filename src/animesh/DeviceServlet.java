@@ -30,7 +30,7 @@ public class DeviceServlet extends HttpServlet {
 		List<String> ld = new DAOOrderToBillOracle().getDeviceIdsInZipcode(zipcode);
 		PrintWriter out=response.getWriter();
 		//out.write("Device: ");
-		out.write("<select id='device' onchange='javascript:checkPort()'>");
+		out.write("<select id='device' onchange='javascript:checkPort(this.value)'>");
 		out.write("<option>");
 		out.write("Select Device");
 		out.write("</option>");

@@ -37,7 +37,7 @@ public class DecisionServlet extends HttpServlet {
 		}
 		else if(selection.equals("viewnetwork")){
 			System.out.println("viewnetwork");
-			RequestDispatcher rd=request.getRequestDispatcher("Visualization.jsp");
+			RequestDispatcher rd=request.getRequestDispatcher("Visualization.html");
 			rd.forward(request, response);
 		}
 		

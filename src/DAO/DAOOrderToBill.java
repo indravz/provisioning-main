@@ -2,7 +2,7 @@ package DAO;
 import java.util.List;
 
 public interface DAOOrderToBill {
-
+	public Circuit getCircuitDetailsUsingPorts(int srcNode, int destNode);
 	public int insertDevice(String deviceId, String partNo,
 			String manufacturer, int zipcode, int portId, String status,
 			int bandwidthMbps, String deviceType);
